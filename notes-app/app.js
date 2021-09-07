@@ -3,5 +3,5 @@
 // console.log(sum)
 
 const notesFile = require('./notes.js')
-
-console.log(notesFile)
+const note = notesFile()
+console.log(note)
