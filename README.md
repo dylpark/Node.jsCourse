@@ -4,7 +4,6 @@
 
 Learning Node.js by building real-world applications with Node JS, Express, MongoDB, Jest, and more.
 
-   - Completely refilmed for 3rd edition
    - Build, test, and launch Node apps
    - Create Express web servers and APIs
    - Store data with Mongoose and MongoDB
