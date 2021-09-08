@@ -27,8 +27,8 @@ yargs.command({
         }
     },
     handler: function(argv) {
-        console.log(chalk.green.bold('Title: ' + argv.title))
-        console.log(chalk.white('Body: ' + argv.body))
+        console.log((chalk.green.bold('Title: ' + argv.title)), argv)
+        console.log((chalk.white('Body: ' + argv.body)), argv)
     }
 })
 
@@ -37,7 +37,7 @@ yargs.command({
     command: 'remove',
     describe: 'Removing new note',
     handler: function() {
-        console.log(chalk.red.bold('Removing the note'))
+        console.log((chalk.red.bold('Removing the note')), argv)
     }
 })
 
@@ -46,7 +46,7 @@ yargs.command({
     command: 'list',
     describe: 'List all your notes',
     handler: function() {
-        console.log(chalk.whiteBright.bold('Listing all your notes'))
+        console.log((chalk.whiteBright.bold('Listing all your notes')), argv)
     }
 })
 
@@ -55,7 +55,7 @@ yargs.command({
     command: 'read',
     describe: 'Read a note',
     handler: function() {
-        console.log(chalk.orange.bold('Reading a note'))
+        console.log((chalk.orange.bold('Reading a note')), argv)
     }
 })
 
