@@ -5,12 +5,12 @@
 const chalk = require('chalk')
 const notesFile = require('./notes.js')
 
-const note = notesFile()
+const command = process.argv[2]
 
-const greenMessage = chalk.green.bold('Green')
-const redMessage = chalk.redBright.bold('Red')
+if (command === 'add') {
+    console.log('Adding Note')
+} else if (command === 'remove') {
+    console.log('Removing Note')
+}
 
-console.log(note)
-console.log(greenMessage)
-console.log(redMessage)
-    // console.log(validator.isURL('https://dylpark.com'))
+console.log(process.argv)
