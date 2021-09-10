@@ -14,14 +14,14 @@ yargs.version('17.1.1')
 yargs.command({
     command: 'add',
     describe: 'Add a new note',
-    builders: {
+    builder: {
         title: {
             describe: 'Note title',
             demandOption: true,
             type: 'string'
         },
         body: {
-            describe: 'Body text of note',
+            describe: 'Note body',
             demandOption: true,
             type: 'string'
         }
@@ -35,18 +35,18 @@ yargs.command({
 // Remove Command
 yargs.command({
     command: 'remove',
-    describe: 'Removing new note',
+    describe: 'Remove a note',
     handler: function() {
-        console.log(chalk.red.bold('Removing the note'))
+        console.log('Removing the note')
     }
 })
 
 // List Command
 yargs.command({
     command: 'list',
-    describe: 'List all your notes',
+    describe: 'List your notes',
     handler: function() {
-        console.log(chalk.whiteBright.bold('Listing all your notes'))
+        console.log('Listing out all notes')
     }
 })
 
@@ -55,9 +55,9 @@ yargs.command({
     command: 'read',
     describe: 'Read a note',
     handler: function() {
-        console.log(chalk.orange.bold('Reading a note'))
+        console.log('Reading a note')
     }
 })
 
-
+// yargs.parse()
 console.log(yargs.argv)
