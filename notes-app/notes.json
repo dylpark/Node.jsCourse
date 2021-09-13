@@ -1,13 +1,1 @@
-[{
-        "title": "Note 1",
-        "body": "this is note one"
-    },
-    {
-        "title": "Note 2",
-        "body": "this is note two"
-    },
-    {
-        "title": "Note 3",
-        "body": "this is note three"
-    }
-]
+[{"title":"Note 1","body":"this is note one"},{"title":"Note 2","body":"this is note two"},{"title":"Note 3","body":"this is note three"},{"title":"Courses","body":"node.js"}]
