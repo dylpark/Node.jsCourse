@@ -1,14 +1,10 @@
 // Dylan Park, 2021.
 // The Complete Node.js Developer Course (3rd Edition)
 
-console.log('Starting')
+const request = require('postman-request');
+const url = 'http://api.weatherstack.com/current?access_key=API_KEY&query=-27.470125,153.021072'
 
-setTimeout(() => {
-    console.log('2 Second Timer')
-}, 2000)
-
-setTimeout(() => {
-    console.log('0 Second Timer')
-}, 0)
-
-console.log('Stopping')
+request({ url: url }, (error, response) => {
+    const data = JSON.parse(response.body)
+    console.log(data.current)
+})
