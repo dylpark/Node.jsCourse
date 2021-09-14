@@ -1,15 +1,28 @@
 // Dylan Park, 2021.
 // The Complete Node.js Developer Course (3rd Edition)
 
+const chalk = require('chalk')
 const geocode = require('./utils/geocode')
 const forecast = require('./utils/forecast')
 
-forecast(-27.470125, 153.021072, (error, data) => {
-    console.log('Error', error)
-    console.log('Data', data)
-})
+const location = process.argv[2]
 
-geocode('Boston', (error, data) => {
-    console.log('Error:', error)
-    console.log('Data:', data)
-})
+if (!location) {
+    console.log(chalk.red('Please Provide a Location'))
+} else {
+    geocode(location, (error, data) => {
+        if (error) {
+            return console.log(error)
+        }
+
+        forecast(data.lat, data.lon, (error, forecastData) => {
+            if (error) {
+                return console.log(error)
+            }
+
+            console.log(chalk.blue.bold(data.location))
+            console.log(forecastData)
+        })
+
+    })
+}

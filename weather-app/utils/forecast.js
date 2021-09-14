@@ -9,13 +9,13 @@ const forecast = (lat, lon, callback) => {
 
     request({ url: forecastURL, json: true }, (error, response) => {
         if (error) {
-            callback((chalk.redBright.bold('Unable to connect to weather provider.')), undefined)
+            callback((chalk.red('Unable to connect to weather provider.')), undefined)
         } else if (response.body.error) {
-            callback(chalk.redBright.bold('Unable to find location.'), undefined)
+            callback(chalk.red('Unable to find location.'), undefined)
         } else {
-            callback(undefined, (chalk.blue.bold(response.body.current.weather_descriptions[0] +
-                ". It is currently " + response.body.current.temperature + " °C." +
-                " It feels like " + response.body.current.feelslike + " °C."
+            callback(undefined, (chalk.blue(response.body.current.weather_descriptions[0] +
+                ". It is currently " + response.body.current.temperature + "°C." +
+                " It feels like " + response.body.current.feelslike + "°C."
             )))
         }
     })
