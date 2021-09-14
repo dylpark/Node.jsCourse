@@ -10,17 +10,17 @@ const location = process.argv[2]
 if (!location) {
     console.log(chalk.red('Please Provide a Location'))
 } else {
-    geocode(location, (error, data) => {
+    geocode(location, (error, { lat, lon, location } = {}) => {
         if (error) {
             return console.log(error)
         }
 
-        forecast(data.lat, data.lon, (error, forecastData) => {
+        forecast(lat, lon, (error, forecastData) => {
             if (error) {
                 return console.log(error)
             }
 
-            console.log(chalk.blue.bold(data.location))
+            console.log(chalk.blue.bold(location))
             console.log(forecastData)
         })
 
