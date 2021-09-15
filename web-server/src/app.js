@@ -46,9 +46,15 @@ app.get('/help', (req, res) => {
 })
 
 app.get('/weather', (req, res) => {
+    if (!req.query.address) {
+        return res.send({
+            error: 'No search term'
+        })
+    }
     res.send({
         location: 'Sydney',
-        forecast: 'This is a weather forecast'
+        forecast: 'This is a weather forecast',
+        address: req.query.address
     })
 })
 
