@@ -18,6 +18,44 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
 
     const db = client.db(databaseName)
 
+    // Update Documents
+
+    // db.collection('users').updateOne({
+    //     _id: new ObjectID("6143e265c09384c83259ba4c")
+    // }, {
+    //     $set: {
+    //         name: 'Barry'
+    //     }
+    // }).then(() => {
+    //     console.log(result)
+    // }).catch(err => {
+    //     console.log(error)
+    // })
+
+    // db.collection('users').updateOne({
+    //     _id: new ObjectID("6143e265c09384c83259ba4c")
+    // }, {
+    //     $inc: {
+    //         age: 1
+    //     }
+    // }).then(() => {
+    //     console.log(result)
+    // }).catch(err => {
+    //     console.log(error)
+    // })
+
+    db.collection('tasks').updateMany({
+        completed: false
+    }, {
+        $set: {
+            completed: true
+        }
+    }).then(() => {
+        console.log(result)
+    }).catch(err => {
+        console.log(error)
+    })
+
     // Querying Documents
 
     // db.collection('users').findOne({ name: 'Jen' }, (error, user) => {
