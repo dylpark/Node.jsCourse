@@ -16,6 +16,15 @@ const User = mongoose.model('User', {
         required: true,
         trim: true
     },
+    age: {
+        type: Number,
+        default: 0,
+        validate(value) {
+            if (value < 0) {
+                throw new Error('Age must be a postive number')
+            }
+        }
+    },
     email: {
         type: String,
         required: true,
@@ -23,25 +32,27 @@ const User = mongoose.model('User', {
         lowercase: true,
         validate(value) {
             if (!validator.isEmail(value)) {
-                throw new Error('Email is inavlid')
+                throw new Error('Email is invalid')
             }
         }
     },
-    age: {
-        type: Number,
-        default: 0,
+    password: {
+        type: String,
+        required: true,
+        minlength: 7,
+        trim: true,
         validate(value) {
-            if (value < 0) {
-                throw new Error('Invalid Age')
+            if (value.toLowerCase().includes('password')) {
+                throw new Error('Password cannot contain "password"')
             }
         }
     }
 })
 
 const newUser = new User({
-    name: 'Jim',
-    age: 34,
-    email: 'myemail@mead.io'
+    name: 'Andrew',
+    email: 'MYEMAIL@MEAD.IO   ',
+    password: 'phone098!'
 })
 
 newUser.save().then(() => {
@@ -51,19 +62,20 @@ newUser.save().then(() => {
 })
 
 // Task Model
-
 const Task = mongoose.model('Task', {
     description: {
-        type: String
+        type: String,
+        required: true,
+        trim: true
     },
     completed: {
-        type: Boolean
+        type: Boolean,
+        default: false
     }
 })
 
 const task = new Task({
-    description: 'Learn the Mongoose library',
-    completed: false
+    description: '  Eat lunch'
 })
 
 task.save().then(() => {
