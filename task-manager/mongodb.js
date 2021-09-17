@@ -2,7 +2,6 @@
 // The Complete Node.js Developer Course (3rd Edition)
 
 // CRUD
-// Create Read Update Delete
 
 // const mongodb = require('mongodb')
 // const MongoClient = mongodb.MongoClient
@@ -12,10 +11,6 @@ const { MongoClient, ObjectID } = require('mongodb')
 const connectionURL = 'mongodb://127.0.0.1:27017'
 const databaseName = 'task-manager'
 
-const id = new ObjectID()
-console.log(id)
-console.log(id.getTimestamp())
-
 MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) => {
     if (error) {
         return console.log('Unable to connect to database!')
@@ -23,17 +18,45 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
 
     const db = client.db(databaseName)
 
-    db.collection('users').insertOne({
-        _id: id,
-        name: 'Vikram',
-        age: 26
-    }, (error, result) => {
-        if (error) {
-            return console.log('Unable to insert user')
-        }
+    // Querying Documents
 
-        console.log(result.insertedId)
-    })
+    // db.collection('users').findOne({ name: 'Jen' }, (error, user) => {
+    //     if (error) {
+    //         return console.log('Unable to fetch user')
+    //     }
+    //     console.log(user)
+    // })
+
+    // db.collection('users').find({ age: 27 }).toArray((error, users) => {
+    //     console.log(users)
+    // })
+
+    // db.collection('users').find({ age: 27 }).count((error, count) => {
+    //     console.log(count)
+    // })
+
+    // Challenge findOne Tasks
+    // db.collection('tasks').findOne({ _id: new ObjectID("6143d8f2aea571fbf598130c") }, (error, tasks) => {
+    //     console.log(tasks)
+    // })
+
+    // db.collection('tasks').find({ completed: false }).toArray((error, tasks) => {
+    //     console.log(tasks)
+    // })
+
+    // The Object ID
+
+    // db.collection('users').insertOne({
+    //     _id: id,
+    //     name: 'Vikram',
+    //     age: 26
+    // }, (error, result) => {
+    //     if (error) {
+    //         return console.log('Unable to insert user')
+    //     }
+
+    //     console.log(result.insertedId)
+    // })
 
     // db.collection('users').insertMany([{
     //     name: 'Jen',
