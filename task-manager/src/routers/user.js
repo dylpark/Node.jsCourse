@@ -22,7 +22,20 @@ userRouter.post('/users', async(req, res) => {
 
 // Upload  Profile Picture
 const avatarUpload = multer({
-    dest: 'avatar'
+    dest: 'avatar',
+    limits: {
+        fileSize: 1000000
+    },
+    fileFilter(req, file, cb) {
+        if (!file.originalname.match(/\.(png|jpg|jpeg)$/)) {
+            return cb(new Error('Please upload a .jpg or .png file.'))
+        }
+        cb(undefined, true)
+
+        // cb(new Error('Please upload and image.'))
+        // cb(undefined, true)
+        // cb(undefined, false)
+    }
 })
 
 userRouter.post('/users/me/avatar', avatarUpload.single('avatar'), (req, res, next) => {
