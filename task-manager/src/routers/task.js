@@ -22,10 +22,21 @@ taskRouter.post('/tasks', auth, async(req, res) => {
 })
 
 // Read Tasks
+// GET /tasks?completed=true
 taskRouter.get('/tasks', auth, async(req, res) => {
+    const match = {}
+
+    if (req.query.completed) {
+        match.completed = req.query.completed === 'true'
+    }
+
     try {
-        const tasks = await Task.find({ owner: req.user._id })
-        res.send(tasks)
+        await req.user.populate({
+            path: 'tasks',
+            match
+        }).execPopulate()
+        res.send(req.user.tasks)
+
     } catch (e) {
         res.status(500).send()
     }
