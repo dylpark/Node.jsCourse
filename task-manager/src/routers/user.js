@@ -5,6 +5,7 @@ const express = require('express')
 const User = require('../models/user')
 const auth = require('../middleware/auth')
 const userRouter = new express.Router()
+const multer = require('multer')
 
 // Create User
 userRouter.post('/users', async(req, res) => {
@@ -17,6 +18,15 @@ userRouter.post('/users', async(req, res) => {
     } catch (e) {
         res.status(400).send(e)
     }
+})
+
+// Upload  Profile Picture
+const avatarUpload = multer({
+    dest: 'avatar'
+})
+
+userRouter.post('/users/me/avatar', avatarUpload.single('avatar'), (req, res, next) => {
+    res.send()
 })
 
 // Login User
