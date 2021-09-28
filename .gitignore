@@ -76,7 +76,8 @@ web_modules/
 .env.test
 .env.production
 
-task-manager/config/
+task-manager/config/dev.env
+task-manager/config/test.env
 
 # parcel-bundler cache (https://parceljs.org/)
 .cache
