@@ -78,6 +78,8 @@ web_modules/
 
 task-manager/config/dev.env
 task-manager/config/test.env
+chat-app/config/dev.env
+chat-app/config/test.env
 
 # parcel-bundler cache (https://parceljs.org/)
 .cache
