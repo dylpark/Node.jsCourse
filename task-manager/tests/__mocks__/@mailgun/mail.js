@@ -1,7 +1,7 @@
 // Dylan Park, 2021.
 // The Complete Node.js Developer Course (3rd Edition)
 
-module.exports = function(API_KEY, DOMAIN) {
+module.exports = function(apiKey, domain) {
     const object2 = {
         send() {
 
