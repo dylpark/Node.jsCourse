@@ -33,7 +33,17 @@ body {
 }
 
 #message-form>button {
-    background: #00A19D;
+    background: #162447;
+    border: none;
+    padding: 0 1rem;
+    margin: 0.25rem;
+    border-radius: 5px;
+    outline: none;
+    color: #fff;
+}
+
+#message-form>#send-location {
+    background: #1F4068;
     border: none;
     padding: 0 1rem;
     margin: 0.25rem;
