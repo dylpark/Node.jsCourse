@@ -4,10 +4,22 @@ The Complete Node.js Developer Course (3rd Edition) -->
 <!DOCTYPE html>
 <html>
 
-<head></head>
+<head>
+    <title>Socket.IO chat</title>
+    <link rel="stylesheet" href="/css/style.css" type=text/css>
+</head>
+<div>
 
-<body>
-    Chat App
-</body>
+    <body>
+        <ul id="messages"></ul>
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="/js/chat.js"></script>
+
+        <form id="form" action="">
+            <input id="input" autocomplete="off" />
+            <button>Send</button>
+        </form>
+    </body>
+</div>
 
 </html>
