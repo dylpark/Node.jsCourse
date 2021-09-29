@@ -23,6 +23,9 @@ socket.on('message', (message) => {
     $messages.insertAdjacentHTML('beforeend', html)
 })
 
+// Options
+const { username, room } = Qs.parse(location.search, { ignoreQueryPrefix: true })
+
 socket.on('locationMessage', (message) => {
     console.log(message)
     const html = Mustache.render(locationMessageTemplate, {
@@ -69,3 +72,5 @@ $sendLocationButton.addEventListener('click', () => {
         })
     })
 })
+
+socket.emit('join', { username, room })

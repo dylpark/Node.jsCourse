@@ -20,19 +20,23 @@ app.use(express.static(publicDirectoryPath))
 io.on('connection', (socket) => {
     console.log('New WebSocket connection')
 
-    socket.emit('message', generateMessage('Welcome!'))
-    socket.broadcast.emit('message', generateMessage('A new user has joined!'))
+    socket.on('join', ({ username, room }) => {
+        socket.join(room)
 
-    // socket.on('sendMessage', (message, callback) => {
-    //     const filter = new Filter()
+        socket.emit('message', generateMessage('Welcome!'))
+        socket.broadcast.to(room).emit('message', generateMessage(`${username} joined the room!`))
+    })
 
-    //     if (filter.isProfane(message)) {
-    //         return callback('Profanity is not allowed!')
-    //     }
+    socket.on('sendMessage', (message, callback) => {
+        // const filter = new Filter()
 
-    //     io.emit('message', generateMessage(message))
-    //     callback()
-    // })
+        // if (filter.isProfane(message)) {
+        //     return callback('Profanity is not allowed!')
+        // }
+
+        io.to('room').emit('message', generateMessage(message))
+        callback()
+    })
 
     socket.on('sendLocation', (coords, callback) => {
         io.emit('locationMessage', generateLocationMessage(`https://google.com/maps?q=${coords.latitude},${coords.longitude}`))
