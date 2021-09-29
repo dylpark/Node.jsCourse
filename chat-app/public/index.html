@@ -8,18 +8,17 @@ The Complete Node.js Developer Course (3rd Edition) -->
     <title>Socket.IO chat</title>
     <link rel="stylesheet" href="/css/style.css" type=text/css>
 </head>
-<div>
 
-    <body>
-        <ul id="messages"></ul>
-        <script src="/socket.io/socket.io.js"></script>
-        <script src="/js/chat.js"></script>
+<body>
+    <ul id="messages"></ul>
 
-        <form id="form" action="">
-            <input id="input" autocomplete="off" />
-            <button>Send</button>
-        </form>
-    </body>
-</div>
+    <form id="message-form" action="">
+        <input name="message" placeholder="Message" id="input" autocomplete="off" />
+        <button id="send">Send</button>
+    </form>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/chat.js"></script>
+</body>
 
 </html>
